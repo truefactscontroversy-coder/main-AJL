@@ -1,157 +1,153 @@
 def ticketing_system():
- # start of start unit
- # message to user
- print("Welcome to the CTA ticketing " 
-      "system please select: start voucher")
- start_now = input()
+    # start of start unit
+    print("Welcome to the CTA ticketing " 
+          "system please select: start voucher")
+    start_now = input()
 
- #error loop if user does not input correct code
- def start_voucher_check():
-  print("please select: start voucher")
-  start_now = input()
-  if start_now == "start voucher":
-   return 
-  else:
-    start_voucher_check()
+    #error loop if user does not input correct code
+    def start_voucher_check():
+        print("please select: start voucher")
+        start_now = input()
+        if start_now == "start voucher":
+            return 
+        else:
+            start_voucher_check()
  
- if start_now != "start voucher":
-  start_voucher_check()
+    if start_now != "start voucher":
+        start_voucher_check()
 
- # voucher list for travel details
- voucher = []
- voucher.append ("date / time")
- print("New page loading") 
- # need to have a way to send code back to start: fixed
- # end of start unit
+     # voucher list for travel details
+    voucher = []
+    voucher.append ("date / time")
+    print("New page loading") 
+    # end of start unit
 
+ #----------------------------------
  # start of add departure unit 
- # function to repeatedly print zones
- 
- ZONES = ["Down town zone", "Mid town zone", "Central zone"]
+ #----------------------------------
+    # zone list for user selection
+    ZONES = ["Down town zone", "Mid town zone", "Central zone"]
  
 
 
- #initial user input for departure zone
-
- print(ZONES)
- print("Please select a starting zone: ") 
- your_location = input()
  
- #error handling function for departure zone
+    # initial user input for departure zone
+    print(ZONES)
+    print("Please select a starting zone: ") 
+    your_location = input()
+ 
+ 
 
        
-       
- def next_step():
-    print("please select: next")
-    please_select = input()
-    if please_select == "next":
-      print("New page loading") 
+    # error handling function for departure zone   
+    def next_step():
+        print("please select: next")
+        please_select = input()
+        if please_select == "next":
+            print("New page loading") 
+        else:
+            next_step()
+
+ 
+    # error handling statment for initial departure zone input
+    if (your_location == "Down town zone" or 
+        your_location == "Mid town zone" or 
+        your_location == "Central zone"):
+        voucher.append(F"Departure zone: {your_location}")
+        next_step()
     else:
-     next_step()
-
- # error handling statment for initial departure zone input
- 
- if (your_location == "Down town zone" or 
-     your_location == "Mid town zone" or 
-     your_location == "Central zone"):
-     voucher.append(F"Departure zone: {your_location}")
-     next_step()
- else:
-      while (your_location != "Down town zone" or 
-         your_location != "Mid town zone" or 
-         your_location != "Central zone"):
-       if (your_location == "Down town zone" or 
-          your_location == "Mid town zone" or 
-          your_location == "Central zone"):
-         voucher.append (F"Departure zone: {your_location}")
-         next_step()
-         break
-       else:
-         print(ZONES)
-         print("Please select a vaild zone") 
-         your_location = input()
+        while (your_location != "Down town zone" or 
+            your_location != "Mid town zone" or 
+            your_location != "Central zone"):
+            if (your_location == "Down town zone" or 
+                your_location == "Mid town zone" or 
+                your_location == "Central zone"):
+                voucher.append (F"Departure zone: {your_location}")
+                next_step()
+                break
+            else:
+                print(ZONES)
+                print("Please select a vaild zone") 
+                your_location = input()
  
     
 
- # end of add departure unit
-
  
- # start of add destination unit
- # problems not sure if the calculations are correct: fixed 
 
- # station lists for each zone
- DOWN_TOWN_STATION = (
-   "Adohad, Brunad, Edert, Elyot, Erean, " 
-   "Holmer, Kelvia, Mareng, Perinad, Pryn, Ruril, Ryall, Zord"
-   )
+     #----------------------------------
+     # start of add destination unit
+     #----------------------------------
 
- MID_TOWN_STATION = (
-   "Agraile, Docia, Garon, Obelyn, Oloadus, "
-   "Quthiel, Ralith, Riciva, Riladia, Sylas, Wicyt"
-   )
+     # station lists for each zone
+     DOWN_TOWN_STATION = ("Adohad, Brunad, Edert, Elyot, Erean, " 
+                          "Holmer, Kelvia, Mareng, Perinad, Pryn, Ruril, Ryall, Zord"
+                          )
 
- CENTRAL_STATION = (
-   "Centrala, Frestin, Jaund, Lomil, "
-   "Ninia, Rede, Riciva, Soth, Sylyn, Tallan"
-   )
+     MID_TOWN_STATION = ("Agraile, Docia, Garon, Obelyn, Oloadus, "
+                         "Quthiel, Ralith, Riciva, Riladia, Sylas, Wicyt"
+                         )
 
- # initial user input for destination zone
- print("station board with all zones and stations")
- print(f"Down town zone stations: {DOWN_TOWN_STATION}")
- print(f"Mid town zone stations: {MID_TOWN_STATION}")
- print(f"Central zone stations: {CENTRAL_STATION}")
- print(ZONES)
- print("Please select a destinationn zone: ")
+     CENTRAL_STATION = ("Centrala, Frestin, Jaund, Lomil, "
+                        "Ninia, Rede, Riciva, Soth, Sylyn, Tallan"
+                        )
+
+     # initial user input for destination zone
+     print("station board with all zones and stations")
+     print(f"Down town zone stations: {DOWN_TOWN_STATION}")
+     print(f"Mid town zone stations: {MID_TOWN_STATION}")
+     print(f"Central zone stations: {CENTRAL_STATION}")
+     print(ZONES)
+     print("Please select a destinationn zone: ")
 
 
- destination_zone = input()
- # error handling function for destination zone
+     destination_zone = input()
+
  
       
- # error handling statment for initial destination zone input
+    # error handling statment for initial destination zone input
  
- if (destination_zone == "Down town zone" or 
-     destination_zone == "Mid town zone" or 
-     destination_zone == "Central zone"):
-     voucher.append(F"Destination zone: {destination_zone}") 
- else:
-     while (destination_zone != "Down town zone" or 
-         destination_zone != "Mid town zone" or 
-         destination_zone != "Central zone"):
-       if (destination_zone == "Down town zone" or 
-          destination_zone == "Mid town zone" or 
-          destination_zone == "Central zone"):
-         voucher.append (F"Destination zone: {destination_zone}")
-         break
-       else:
-         print(ZONES)
-         print("Please select a vaild zone") 
-         destination_zone = input()
+    if (destination_zone == "Down town zone" or 
+        destination_zone == "Mid town zone" or 
+        destination_zone == "Central zone"):
+        voucher.append(F"Destination zone: {destination_zone}") 
+    else:
+        while (destination_zone != "Down town zone" or 
+               destination_zone != "Mid town zone" or 
+               destination_zone != "Central zone"):
+        if (destination_zone == "Down town zone" or 
+            destination_zone == "Mid town zone" or 
+            destination_zone == "Central zone"):
+            voucher.append (F"Destination zone: {destination_zone}")
+            break
+        else:
+            print(ZONES)
+            print("Please select a vaild zone") 
+            destination_zone = input()
  
-  # calculation of zones traveled through    
+    # calculation of zones traveled through    
  
  
 
- if your_location == destination_zone:
+    if your_location == destination_zone:
        zone_num = 1
        next_step()
- elif (your_location == "Down town zone" and 
+    elif (your_location == "Down town zone" and 
        destination_zone == "Central zone"):
        zone_num = 3
        next_step()
- elif (your_location == "Central zone" and 
+    elif (your_location == "Central zone" and 
        destination_zone == "Down town zone"):
        zone_num = 3
        next_step()
- else:
+    else:
        zone_num = 2 
        next_step()
  
- #end of add destination unit
+ 
 
- # start of add destination station unit
+    # start of add destination station unit
 
- # display station list based on destination zone 
+
 
 
  #error handling system for if downtown is selected
@@ -229,34 +225,34 @@ def ticketing_system():
  # user input for passenger catagory
  def passenger_catagory_adult():
    print("Adult : add number of passengers")
-   Adult = int(input())
-   if Adult <= 0:
-     Adult = 0
-   return Adult
+   adult = int(input())
+   if adult <= 0:
+     adult = 0
+   return adult
  def passenger_catagory_child():
    print("Child: add number of passengers")
-   Child = int(input())
-   if Child <= 0:
-     Child = 0
-   return Child
+   child = int(input())
+   if child <= 0:
+     child = 0
+   return child
  def passenger_catagory_student():
    print("Student: add number of passengers")
-   Student = int(input())
-   if Student <= 0:
-     Student = 0
-   return Student
+   student = int(input())
+   if student <= 0:
+     student = 0
+   return student
  def passenger_catagory_elderly():
    print("Elderly: add number of passengers")
-   Elderly = int(input())
-   if Elderly <= 0:
-     Elderly = 0
-   return Elderly
+   elderly = int(input())
+   if elderly <= 0:
+     elderly = 0
+   return elderly
   
  adult_cost = passenger_catagory_adult()
- Child_cost = passenger_catagory_child()
- Student_cost = passenger_catagory_student()
+ child_cost = passenger_catagory_child()
+ student_cost = passenger_catagory_student()
  elderly_cost = passenger_catagory_elderly()
- total_passenger = adult_cost + Child_cost + Student_cost + elderly_cost
+ total_passenger = adult_cost + child_cost + student_cost + elderly_cost
 
  if (total_passenger != 0): 
   voucher.append (f"Total number of passengers: {total_passenger}")
@@ -270,10 +266,10 @@ def ticketing_system():
     else:
      print("please add at least one passenger")
      adult_cost = passenger_catagory_adult()
-     Child_cost = passenger_catagory_child()
-     Student_cost = passenger_catagory_student()
+     child_cost = passenger_catagory_child()
+     student_cost = passenger_catagory_student()
      elderly_cost = passenger_catagory_elderly()
-     total_passenger = adult_cost + Child_cost + Student_cost + elderly_cost
+     total_passenger = adult_cost + child_cost + student_cost + elderly_cost
 
  # end of add passenger unit
  
@@ -283,18 +279,18 @@ def ticketing_system():
  adult_cost *= zone_num
  voucher.append (f"Total Adult cost in cents: {adult_cost}")
 
- Child_cost *= 1410
- Child_cost *= zone_num
- voucher.append (f"Total Child cost in cents: {Child_cost}")   
+ child_cost *= 1410
+ child_cost *= zone_num
+ voucher.append (f"Total Child cost in cents: {child_cost}")   
  
- Student_cost *= zone_num
- voucher.append (f"Total Student cost in cents: {Student_cost}")
+ student_cost *= zone_num
+ voucher.append (f"Total Student cost in cents: {student_cost}")
  
  elderly_cost *= 1025
  elderly_cost *= zone_num
  voucher.append (f"Total Elderly cost in cents: {elderly_cost}")
 
- total_cost = adult_cost + Child_cost + Student_cost + elderly_cost
+ total_cost = adult_cost + child_cost + student_cost + elderly_cost
  voucher.append (f"Total cost of trip in cents: {total_cost}")
 
 
